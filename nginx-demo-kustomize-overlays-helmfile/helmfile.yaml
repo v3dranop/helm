@@ -1,22 +1,9 @@
-#releases:
-#  - name: nginx-demo-dev
-#    namespace: nginx-demo-dev
-#    chart: kustomize/nginx-demo/overlays/dev
-
-environments:
-  development:
-    values:
-      - namespace: dev
-  production:
-    values:
-      - namespace: prod
-
 releases:
   - name: nginx-demo-dev
-    namespace: {{ .Values.namespace | default "k8s-training-dev" }}
+    namespace: nginx-demo-dev
     chart: kustomize/nginx-demo/overlays/dev
-
-releases:
   - name: nginx-demo-prod
-    namespace: {{ .Values.namespace | default "k8s-training-prod" }}
+    namespace: nginx-demo-prod3
     chart: kustomize/nginx-demo/overlays/prod
+
+
