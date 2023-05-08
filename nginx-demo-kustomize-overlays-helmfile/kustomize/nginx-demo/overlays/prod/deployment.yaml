@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-demo
+spec:
+  replicas: 6
+  template:
+    spec:
+      initContainers:
+      - name: init-sysctl
+        image: busybox
+        command:
+        - sysctl
+        - -w
+        - net.core.somaxconn=1024
+        securityContext:
+          privileged: true
+          runAsUser: 0
+          runAsNonRoot: False
+      containers:
+      - name: nginx
+        resources:
+          requests:
+            cpu: 1
+            memory: "512M"
+          limits:
+            cpu: 2
+            memory: "1G"

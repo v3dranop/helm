@@ -1,0 +1,9 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: nginx-demo
+  name: nginx-demo
+spec:
+  maxReplicas: 20
+  minReplicas: 6
